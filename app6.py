@@ -15,10 +15,10 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.secret_key = 'kashya'
 api = Api(app)
 
-@app.before_first_request
-def create_tables():
-    # db.delete()
-    db.create_all()  #sqlAlchemy goes through imports above and gets to models and creates tables and columns
+# @app.before_first_request   moved to run.py
+# def create_tables():
+#     # db.delete()
+#     db.create_all()  #sqlAlchemy goes through imports above and gets to models and creates tables and columns
 
 # If we want to change the url to the authentication endpoint, for instance, we want to
 # use /login instead of /auth
