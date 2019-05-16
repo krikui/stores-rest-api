@@ -1,4 +1,5 @@
 from datetime import timedelta
+import os
 
 from resources.item import Item, ItemList
 
@@ -10,7 +11,9 @@ from security import authenticate, identity
 from resources.store import Store, StoreList
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:///data.db')  #choose env var DB from Heroku, if not use local sqlite
+
+
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.secret_key = 'kashya'
 api = Api(app)
